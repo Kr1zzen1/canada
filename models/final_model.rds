@@ -1,0 +1,17 @@
+# modeling.R
+
+# Load necessary libraries
+library(dplyr)
+
+# Step 1: Load cleaned data (this assumes you already ran 'cleaning.R' and have 'cleaned_data.csv')
+data <- read.csv('data/cleaned_data.csv')
+
+# Step 2: Run Linear Regression Model
+# Predicting supplier diversity score based on transparency score
+model <- lm(supplier_diversity_score ~ transparency_score, data = data)
+
+# Step 3: Save the final model as an RDS file
+saveRDS(model, 'models/final_model.rds')
+
+# Print message to confirm that the model has been saved
+cat("Model saved as final_model.rds\n")
